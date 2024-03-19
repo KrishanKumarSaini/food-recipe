@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 export const GlobalContext = createContext(null);
 
+const API_URL = "https://forkify-api.herokuapp.com/api/v2/recipes";
+
 export default function GlobalState({ children }) {
   const [searchParam, setSearchParam] = useState("");
   const [loading, setLoading] = useState(false);
@@ -11,41 +13,34 @@ export default function GlobalState({ children }) {
   const [favList, setFavList] = useState([]);
   const navigate = useNavigate();
 
-  async function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
     try {
-      const res = await fetch(
-        `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchParam}`
-      );
-
+      const res = await fetch(`${API_URL}?search=${searchParam}`);
       const data = await res.json();
-
       if (data?.data?.recipes) {
-        setRecipeList(data?.data?.recipes);
-        setLoading(false);
-        setSearchParam("");
+        setRecipeList(data.data.recipes);
         navigate("/");
       }
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.error("Error fetching recipes:", error);
+    } finally {
       setLoading(false);
       setSearchParam("");
     }
-  }
+  };
 
-  function handleAddtoFavorite(getCurrentItem) {
-    let cpyFavoriteList = [...favList];
-    const index = cpyFavoriteList.findIndex(
-      (item) => item.id === getCurrentItem.id
-    );
-
+  const handleAddtoFavorite = (recipe) => {
+    const index = favList.findIndex((item) => item.id === recipe.id);
     if (index === -1) {
-      cpyFavoriteList.push(getCurrentItem);
+      setFavList([...favList, recipe]);
     } else {
-      cpyFavoriteList.splice(index);
+      const newFavList = [...favList];
+      newFavList.splice(index, 1);
+      setFavList(newFavList);
     }
-    setFavList(cpyFavoriteList);
-  }
+  };
 
   function clearFavorites() {
     setFavList([]);
