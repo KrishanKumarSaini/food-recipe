@@ -24,7 +24,7 @@ export default function Favorites() {
             </div>
           )}
           {favList.map((item) => (
-            <RecipeItem item={item} />
+            <RecipeItem key={item.id} item={item} />
           ))}
         </>
       ) : (
