@@ -16,7 +16,7 @@ export default function Favorites() {
           {favList.length > 1 && (
             <div>
               <button
-                className="text-sm p-3 mt-5 px-8 rounded-lg uppercase font-medium tracking-wider inline-block shadow-md bg-black text-white"
+                className="text-sm p-3 mt-5 px-8 rounded-lg uppercase font-medium tracking-wider inline-block shadow-md bg-gray-700 text-white"
                 onClick={handleClearFavorites}
               >
                 Remove All
@@ -29,7 +29,7 @@ export default function Favorites() {
         </>
       ) : (
         <div>
-          <p className="lg:text-4xl text-xl text-center text-black font-extrabold">
+          <p className="lg:text-4xl text-xl text-center text-slate-200 font-extrabold">
             Nothing is added in Favorites.
           </p>
         </div>

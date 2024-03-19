@@ -25,7 +25,7 @@ export default function Details() {
     getRecipeDetailsData();
   }, []);
   return (
-    <div className="container mx-auto py-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
+    <div className="container mx-auto py-10 px-4 grid grid-cols-1 lg:grid-cols-2 gap-10 bg-gray-500">
       <div className="row-start-2 lg:row-start-auto">
         <div className="h-96 overflow-hidden rounded-xl group">
           <img
@@ -36,15 +36,15 @@ export default function Details() {
         </div>
       </div>
       <div className="flex flex-col gap-3">
-        <span className="text-sm text-cyan-700 font-medium">
+        <span className="text-sm text-slate-50 font-bold">
           {recipeDetailsData?.recipe?.publisher}
         </span>
-        <h2 className="text-2xl text-black truncate font-bold">
+        <h2 className="text-2xl text-slate-900 truncate font-bold">
           {recipeDetailsData?.recipe?.title}
         </h2>
         <div>
           <button
-            className="p-3 px-8 rounded-lg text-sm uppercase font-medium tracking-wider mt-3 inline-block shadow-md bg-black text-white"
+            className="p-3 px-8 rounded-lg text-sm uppercase font-medium tracking-wider mt-3 inline-block shadow-md bg-gray-700 text-white"
             onClick={() => handleAddtoFavorite(recipeDetailsData?.recipe)}
           >
             {favList &&
@@ -57,10 +57,10 @@ export default function Details() {
           </button>
         </div>
         <div>
-          <span className="text-2xl font-semibold text-black">
+          <span className="text-2xl font-semibold text-slate-50">
             Ingredients:
           </span>
-          <ul className="flex flex-col gap-3 mt-2">
+          <ul className="flex flex-col gap-3 mt-2 text-slate-50">
             {recipeDetailsData?.recipe?.ingredients.map((ingre) => (
               <li>
                 <span>
