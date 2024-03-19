@@ -7,7 +7,7 @@ export default function Navbar() {
     useContext(GlobalContext);
 
   return (
-    <nav className="fflex justify-between items-center py-8 container mx-auto flex-col lg:flex-row gap-5 lg:gap-0 border-none dark:bg-gray-900 text-white">
+    <nav className="flex justify-between items-center py-8 container mx-auto flex-col lg:flex-row gap-5 lg:gap-0 border-none dark:bg-gray-900 text-white">
       <h2 className="text-2xl font-semibold text-white">
         <NavLink to={"/"}>FoodRecipe</NavLink>
       </h2>
