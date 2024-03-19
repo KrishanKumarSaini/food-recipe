@@ -34,7 +34,6 @@ export default function GlobalState({ children }) {
   }
 
   function handleAddtoFavorite(getCurrentItem) {
-    console.log(getCurrentItem);
     let cpyFavoriteList = [...favList];
     const index = cpyFavoriteList.findIndex(
       (item) => item.id === getCurrentItem.id
@@ -47,7 +46,10 @@ export default function GlobalState({ children }) {
     }
     setFavList(cpyFavoriteList);
   }
-  console.log(favList, "favList");
+
+  function clearFavorites() {
+    setFavList([]);
+  }
 
   return (
     <GlobalContext.Provider
@@ -61,6 +63,7 @@ export default function GlobalState({ children }) {
         setRecipeDetailsData,
         handleAddtoFavorite,
         favList,
+        clearFavorites,
       }}
     >
       {children}

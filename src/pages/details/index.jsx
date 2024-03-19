@@ -17,7 +17,7 @@ export default function Details() {
         `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
       );
       const data = await res.json();
-      console.log(data);
+
       if (data?.data) {
         setRecipeDetailsData(data?.data);
       }
